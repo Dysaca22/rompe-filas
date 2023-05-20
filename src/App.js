@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* Styles */
+//import style from './App.module.css'
+
+/* Components and Pages */
+import Home from './pages/Home'
+import CreateTurn from './pages/CreateTurn'
+import ListTurn from './pages/ListTurn'
+import Qualify from './pages/Qualify'
+import Register from './pages/Register'
+
+
+export default class App extends Component {
+
+    constructor(props) {
+        super()
+    }
+
+    render() {
+        return (
+            <>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/crear-turno' element={<CreateTurn />} />
+                        <Route path='/turnos' element={<ListTurn />} />
+                        <Route path='/califica' element={<Qualify />} />
+                        <Route path='/sesion' element={<Register />} />
+                    </Routes>
+                </BrowserRouter>
+            </>
+        )
+    }
 }
-
-export default App;
