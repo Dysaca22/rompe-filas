@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 /* Styles */
-//import style from './App.module.css'
+import style from './App.module.css'
 
 /* Components and Pages */
 import Home from './pages/Home'
@@ -20,7 +20,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <>
+            <div className={style.app}>
                 <BrowserRouter>
                     <Routes>
                         <Route path='/' element={<Home />} />
@@ -30,7 +30,7 @@ export default class App extends Component {
                         <Route path='/sesion' element={<Register />} />
                     </Routes>
                 </BrowserRouter>
-            </>
+            </div>
         )
     }
 }

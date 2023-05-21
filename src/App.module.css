@@ -1,0 +1,9 @@
+.app {
+    flex: 1;
+    padding: 40px 8%;
+
+    background-image: var(--bg-color-gradient);
+
+    display: flex;
+    flex-flow: column wrap;
+}

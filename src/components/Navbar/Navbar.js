@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import style from './Navbar.module.css'
 
 /* Components and Pages */
+import ButtonLine from '../ButtonLine'
 
 
 export default class Navbar extends Component {
@@ -15,15 +16,20 @@ export default class Navbar extends Component {
 
     render() {
         return (
-            <>
-                <nav className={style.nav}>
-                    <Link to='/'>Inicio</Link>
-                    <Link to='/crear-turno'>Crea tu turno</Link>
-                    <Link to='/turnos'>Tus turnos</Link>
-                    <Link to='/califica'>Califica</Link>
-                    <Link to='/sesion'>Sesión</Link>
-                </nav>
-            </>
+            <header className={style.header}>
+                <div className={style.center}>
+                    <h1>Logo</h1>
+                    <nav className={style.nav}>
+                        <Link className={style.link} to='/'>Inicio</Link>
+                        <Link className={style.link} to='/crear-turno'>Crea tu turno</Link>
+                        <Link className={style.link} to='/turnos'>Tus turnos</Link>
+                        <Link className={style.link} to='/califica'>Califica</Link>
+                    </nav>
+                    <ButtonLine>
+                        <Link className={style.link} to='/sesion'>Sesión</Link>
+                    </ButtonLine>
+                </div>
+            </header>
         )
     }
 }
