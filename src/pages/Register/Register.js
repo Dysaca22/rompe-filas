@@ -20,17 +20,16 @@ export default class Register extends Component {
                 <div className={style.loginWrapper}>
                     <h2>Registrate</h2>
                     <section className={style.form_back}>
-                        <div className={style.form_section}>
-                            <form class="">
-                                <label>
+                            <form class={style.form}>
+                                <label className={style.inputs}>
                                     <p>Nombre</p>
                                     <input type="text" />
                                 </label>
-                                <label>
+                                <label className={style.inputs}>
                                     <p>Correo </p>
                                     <input type="email" />
                                 </label>
-                                <label>
+                                <label className={style.inputs}>
                                     <p>Telefono</p>
                                     <input type="tel" />
                                 </label>
@@ -38,7 +37,6 @@ export default class Register extends Component {
                                     <button className={style.submit}type="submit">Enviar</button>
                                 </div>
                             </form>
-                        </div>
                     </section>
                 </div>
             </>

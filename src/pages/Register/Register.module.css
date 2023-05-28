@@ -73,8 +73,22 @@ form input[type="tel"] {
     justify-content: center;
 }
 
-.form_section {
+.form {
+    width: 100%;
+    padding: 5px;
+}
+
+.inputs{
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.inputs p {
+    flex: 1 1 20%;
+}
+
+.inputs input {
+    flex: 1 1 70%;
 }
