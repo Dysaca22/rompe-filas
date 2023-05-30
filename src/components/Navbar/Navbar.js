@@ -26,7 +26,7 @@ export default class Navbar extends Component {
                         <Link className={style.link} to='/califica'>Califica</Link>
                     </nav>
                     <ButtonLine>
-                        <Link className={style.link} to='/sesion'>Sesión</Link>
+                        Sesión
                     </ButtonLine>
                 </div>
             </header>
