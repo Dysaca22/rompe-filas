@@ -35,6 +35,6 @@
     font-weight: bold;
 }
 
-.nav .link:hover {
-    color: var(--bg-color-2);
+nav .link:hover {
+    color: white;
 }

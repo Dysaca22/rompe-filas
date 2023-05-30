@@ -19,16 +19,18 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className={style.app}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/crear-turno' element={<CreateTurn />} />
-                        <Route path='/turnos' element={<ListTurn />} />
-                        <Route path='/califica' element={<Qualify />} />
-                    </Routes>
-                </BrowserRouter>
-            </div>
+            <>
+                <div className={style.app}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/crear-turno' element={<CreateTurn />} />
+                            <Route path='/turnos' element={<ListTurn />} />
+                            <Route path='/califica' element={<Qualify />} />
+                        </Routes>
+                    </BrowserRouter>
+                </div>
+            </>
         )
     }
 }
