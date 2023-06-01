@@ -123,7 +123,7 @@ const TheCalendar = props => {
             {bookingDate && selectedTimeSlot ? (
                 <div>
                     <div>
-                        <Notification text={`Cita asignada: ${dateString(bookingDate)} at ${selectedTimeSlot}`} />
+                        <Notification text={`Assigned appointment: ${dateString(bookingDate)} at ${selectedTimeSlot}`} />
                     </div>
                 </div>
             ) : null}

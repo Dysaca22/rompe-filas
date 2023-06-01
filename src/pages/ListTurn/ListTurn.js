@@ -6,12 +6,20 @@ import style from './ListTurn.module.css'
 /* Components and Pages */
 import Navbar from '../../components/Navbar'
 import Calendar from '../../components/Calendar'
+import Table from '../../components/Table'
+
+/* Icons */
+import { IconClipboard } from '@tabler/icons-react';
 
 
 export default class ListTurn extends Component {
 
     constructor(props) {
         super()
+        this.header = ['Date', 'Time', 'Action']
+        this.content = [
+            ['1', '2', (<IconClipboard size={30} />)],
+        ]
     }
 
     render() {
@@ -25,13 +33,7 @@ export default class ListTurn extends Component {
                     <section className={style.section}>
                         <Calendar />
                         <div className={style.table_div}>
-                            <table className={style.table}>
-                                <tr className={style.td_th}>
-                                    <td className={style.td_th}>Date</td>
-                                    <td className={style.td_th}>Tobias</td>
-                                    <td className={style.td_th}>Linus</td>
-                                </tr>
-                            </table>
+                            <Table header={this.header} content={this.content} />
                         </div>
                     </section>
                 </div>

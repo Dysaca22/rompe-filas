@@ -5,6 +5,7 @@
   "dependencies": {
     "@progress/kendo-react-dateinputs": "^5.13.1",
     "@progress/kendo-theme-default": "^6.4.0",
+    "@tabler/icons-react": "^2.20.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

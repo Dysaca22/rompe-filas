@@ -27,20 +27,10 @@
 }
 
 .table_div {
+    max-width: 40%;
     flex: 40%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     padding: 20px 5px;
-}
-
-.table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.td_th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
 }
