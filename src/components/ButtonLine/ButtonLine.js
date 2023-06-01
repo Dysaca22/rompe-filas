@@ -11,12 +11,28 @@ export default class ButtonLine extends Component {
     constructor(props) {
         super()
         this.children = props.children
+        this.clickButton = props?.clickButton || this.defaultFunction
+        this.id = props.id || ''
+
+        this.state = {
+            name: this.children
+        }
+    }
+
+    changeName = async(newElementName) => {
+        await this.setState({
+            name: newElementName
+        })
+    }
+
+    defaultFunction(){
+
     }
 
     render() {
         return (
-            <button className={style.btn}>
-                {this.children}
+            <button id={this.id} className={style.button} onClick={this.clickButton}>
+                {this.state.name}
             </button>
         )
     }

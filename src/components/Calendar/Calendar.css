@@ -1,0 +1,24 @@
+.k-calendar {
+    border-radius: 15px;
+    background-color: #e1ffff;
+    font-family: 'Nanuto Sans', sans-serif;
+    color: black;
+}
+
+.k-calendar-content {
+    background-color: #e1ffff;
+}
+
+.k-link, .k-link:hover {
+    border-radius: 15px;
+}
+
+.k-calendar .k-calendar-td.k-selected .k-calendar-cell-inner, .k-calendar .k-calendar-td.k-selected .k-link {
+    border-radius: 15px;
+    background-color: var(--bg-color-1) !important;
+    color: white;
+}
+
+.k-ml-4.k-display-flex.k-flex-col button {
+    cursor: pointer;
+}

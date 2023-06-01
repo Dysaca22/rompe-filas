@@ -5,5 +5,5 @@
     background-image: var(--bg-color-gradient);
 
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
 }

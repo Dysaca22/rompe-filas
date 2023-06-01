@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 /* Styles */
-//import style from './Notification.module.css'
+import style from './Notification.module.css';
 
 /* Components and Pages */
 
@@ -10,13 +10,17 @@ export default class Notification extends Component {
 
     constructor(props) {
         super()
+        this.text = props.text
     }
 
     render() {
         return (
             <>
-                <h1>Notificación</h1>
+                <div className={style.notification}>
+                    <p>{this.text}</p>
+                    <span className={style.notification_progress}></span>
+                </div>
             </>
-        )
+        );
     }
 }
