@@ -1,15 +1,40 @@
-.react-calendar { 
-    background-color: #fff;
-    color: #222;
-    width: 80%;
-    border-radius: 8px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.125em;
-
+.calendar_container {
+    display: grid;
+    grid-template-columns: fr 1fr;
+    /* Dos columnas de tamaño igual */
+    /* Espacio entre las columnas */
 }
 
-.calendar_container{
+.calendar {
     display: flex;
     justify-content: center;
+    color: cadetblue;
+}
+
+.calendar_container {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.events {
+    color: #333;
+    margin: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 6px;
+}
+
+.buttons:focus,
+.buttons:active {
+    background-color: white;
+    color: black;
 }

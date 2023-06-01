@@ -1,22 +1,15 @@
-import React, { Component } from 'react'
-
-/* Styles */
-//import style from './Notification.module.css'
-
-/* Components and Pages */
-
+import React, { Component } from 'react';
+import style from './Notification.module.css';
 
 export default class Notification extends Component {
-
-    constructor(props) {
-        super()
-    }
-
-    render() {
-        return (
-            <>
-                <h1>Notificación</h1>
-            </>
-        )
-    }
+  render() {
+    return (
+      <>
+        <div className={style.notification}>
+          <p>Cita asignada: {this.props.bookingDate}  a las {this.props.bookingTime}</p>
+          <span className={style.notification_progress}></span>
+        </div>
+      </>
+    );
+  }
 }

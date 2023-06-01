@@ -17,7 +17,8 @@ export default class Qualify extends Component {
         return (
             <>
                 <Navbar />
-                <h1>Calificación</h1>
+                <h2>Califica tus citas</h2>
+                
             </>
         )
     }
