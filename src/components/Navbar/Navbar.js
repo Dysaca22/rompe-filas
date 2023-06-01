@@ -41,7 +41,7 @@ export default class Navbar extends Component {
                         <h1>Logo</h1>
                         <nav className={style.nav}>
                             <ButtonLine><Link className={style.link} to='/'>Home</Link></ButtonLine>
-                            <ButtonLine><Link className={style.link} to='/turns'>Your Turns</Link></ButtonLine>
+                            <ButtonLine><Link className={style.link} to='/turns'>Turns</Link></ButtonLine>
                         </nav>
                         <ButtonLine ref={this.logRef} id='log' clickButton={this.registerOnClick} >
                             <span className={style.link}>{this.initialNameLog}</span>

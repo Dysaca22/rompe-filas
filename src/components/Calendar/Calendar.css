@@ -22,3 +22,7 @@
 .k-ml-4.k-display-flex.k-flex-col button {
     cursor: pointer;
 }
+
+.container_calendar {
+    min-width: 500px;
+}

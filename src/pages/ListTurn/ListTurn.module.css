@@ -28,6 +28,7 @@
 
 .table_div {
     max-width: 40%;
+    min-width: 350px;
     flex: 40%;
     display: flex;
     justify-content: flex-end;

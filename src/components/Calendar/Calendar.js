@@ -1,13 +1,14 @@
-import { Calendar } from "@progress/kendo-react-dateinputs";
-import { useEffect, useRef, useState } from "react";
+import { Calendar } from "@progress/kendo-react-dateinputs"
+import { useEffect, useRef, useState } from "react"
+import axios from "axios"
 
 /* Styles */
 import style from './Calendar.module.css'
-import '@progress/kendo-theme-default/dist/all.css';
+import '@progress/kendo-theme-default/dist/all.css'
 import './Calendar.css'
 
 /* Components and Pages */
-import Notification from '../../components/Notification';
+import Notification from '../../components/Notification'
 
 
 const times = [
@@ -57,6 +58,15 @@ const TheCalendar = props => {
     const [bookingTimes, setBookingTimes] = useState([]);
     const timeSlotCacheRef = useRef(new Map());
 
+    const fun = props.fun;
+
+    const dateString = (date) => {
+        let textDate = new Date(date)
+        textDate.setDate(textDate.getDate())
+        const newDate = textDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
+        return newDate
+    }
+
     useEffect(() => {
         // Bail out if there is no date selected
         if (!bookingDate) return;
@@ -92,18 +102,36 @@ const TheCalendar = props => {
         timeSlotCacheRef.current.set(bookingDate.toDateString(), newBookingTimes);
 
         setBookingTimes([]);
-    };
 
-    const dateString = (date) => {
-        let textDate = new Date(date)
-        textDate.setDate(textDate.getDate() + 1)
-        const newDate = textDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
-        return newDate
-    }
+        const data = {
+            'date': bookingDate,
+            'time': time
+        }
+
+        const tokenStorage = JSON.parse(localStorage.getItem('tokenStorage')) || ''
+
+        axios.post('http://localhost:8000/api/turns/', data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokenStorage}`
+            }
+        })
+            .then((response) => {
+                const { ok } = response.data
+                if (ok) {
+                    fun([dateString(bookingDate), `${time}`, 'c'])
+                } else {
+                    console.log(response)
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    };
 
     return (
         <div className="k-my-8">
-            <div className="k-flex k-display-flex k-mb-4">
+            <div className="k-flex k-display-flex k-mb-4 container_calendar">
                 <Calendar value={bookingDate} onChange={onDateChange} />
                 <div className="k-ml-4 k-display-flex k-flex-col">
                     {bookingTimes.map(time => {
@@ -126,7 +154,7 @@ const TheCalendar = props => {
                         <Notification text={`Assigned appointment: ${dateString(bookingDate)} at ${selectedTimeSlot}`} />
                     </div>
                 </div>
-            ) : null}
+            ) : ''}
         </div>
     );
 

@@ -12,6 +12,11 @@ class Table extends Component {
         super()
         this.header = props.header || []
         this.content = props.content || []
+
+        this.state = {
+            header: this.header,
+            content: this.content
+        }
     }
 
     render() {
@@ -22,19 +27,19 @@ class Table extends Component {
                         <thead>
                             <tr className={style.tr}>
                                 {
-                                    this.header.map(header =>
-                                        (<th className={`${style.text_left} ${style.th}`}>{header}</th>)
+                                    this.state.header.map((header, index) =>
+                                        (<th key={`header-${index}`} className={`${style.text_left} ${style.th}`}>{header}</th>)
                                     )
                                 }
                             </tr>
                         </thead>
                         <tbody className={style.table_hover}>
                             {
-                                this.content.map(row =>
-                                (<tr className={style.tr}>
+                                this.state.content.map((row, index) =>
+                                (<tr key={`row-${index}`} className={style.tr}>
                                     {
-                                        row.map(cell =>
-                                            (<td className={`${style.text_left} ${style.td}`}>{cell}</td>)
+                                        row.map((cell, index) =>
+                                            (<td key={`cell-${index}`} className={`${style.text_left} ${style.td}`}>{cell}</td>)
                                         )
                                     }
                                 </tr>)

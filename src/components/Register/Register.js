@@ -32,7 +32,7 @@ export default class Register extends Component {
                     const { access } = response.data
                     document.getElementById('register').classList.add('is-hidden')
                     document.querySelector(`.${style.error}`).classList.add('is-hidden')
-                    window.localStorage.setItem("tokenStorage", JSON.stringify(`Bearer ${access}`))
+                    window.localStorage.setItem("tokenStorage", JSON.stringify(access))
                     document.querySelectorAll('input').forEach(input => {
                         input.value = ''
                     })

@@ -11,16 +11,16 @@ class Cube extends Component {
             <>
                 <div className={style.body}>
                     <svg className={style.svg} fill="none" overflow="hidden" xmlns="http://www.w3.org/2000/svg">                        
-                        <use href="#cube" x="0" y="15" stroke-width="2">
+                        <use href="#cube" x="0" y="15" strokeWidth="2">
                             <animate attributeName="stroke" dur="6s" repeatCount="indefinite"
                                 values="#FF9AA2;#FFB7B2;#FFDAC1;#E2F0CB;#B5EAD7;#C7CEEA;#FF9AA2" />
                         </use>
 
                         <defs>
                             <g id="cube">
-                                <use href="#cube_outline" stroke-linejoin="round" stroke-width="16" fill="url(#stars)" />
-                                <use href="#cube_base" stroke-width=".5" />
-                                <use href="#cube_outline" stroke-linejoin="round" stroke-width="6" stroke="#141417" />
+                                <use href="#cube_outline" strokeLinejoin="round" strokeWidth="16" fill="url(#stars)" />
+                                <use href="#cube_base" strokeWidth=".5" />
+                                <use href="#cube_outline" strokeLinejoin="round" strokeWidth="6" stroke="#141417" />
                             </g>
 
                             <g id="cube_outline">
@@ -73,12 +73,12 @@ class Cube extends Component {
                                 </path>
                             </g>
                             <linearGradient id="fade" gradientTransform="rotate(90)">
-                                <stop offset="0" stop-color="#14141700" />
-                                <stop offset="0.25" stop-color="#141417ff" />
+                                <stop offset="0" stopColor="#14141700" />
+                                <stop offset="0.25" stopColor="#141417ff" />
                             </linearGradient>
                             <linearGradient id="sky" gradientTransform="rotate(90)">
-                                <stop offset="0.5" stop-color="#141417" />
-                                <stop offset="1" stop-color="#40354a" />
+                                <stop offset="0.5" stopColor="#141417" />
+                                <stop offset="1" stopColor="#40354a" />
                             </linearGradient>
 
                             <pattern id="stars" x="0" y="0" width="50%" height="50%" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -124,7 +124,7 @@ class Cube extends Component {
                             </circle>
                             <circle id="star04" r="1" />
 
-                            <path id="star10" stroke-width="2">
+                            <path id="star10" strokeWidth="2">
                                 <animate attributeName="d" dur="5s" repeatCount="indefinite"
                                     keyTimes="0;0.90;0.97;1"
                                     keySplines="0 0.4 1 0.2; 0 0.4 1 0.2; 0 0.4 1 0.2"
@@ -133,7 +133,7 @@ class Cube extends Component {
                                     keyTimes="0;0.90;0.97;1"
                                     values="1; 1; 0.6; 0" />
                             </path>
-                            <path id="star11" stroke-width="3">
+                            <path id="star11" strokeWidth="3">
                                 <animate attributeName="d" dur="6s" repeatCount="indefinite" delay="3s"
                                     keyTimes="0;0.90;0.95;1"
                                     keySplines="0 0.4 1 0.2; 0 0.4 1 0.2; 0 0.4 1 0.2"

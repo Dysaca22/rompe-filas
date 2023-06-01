@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 /* Styles */
 import style from './ListTurn.module.css'
@@ -20,6 +20,13 @@ export default class ListTurn extends Component {
         this.content = [
             ['1', '2', (<IconClipboard size={30} />)],
         ]
+        this.refTable = createRef()
+    }
+
+    changeContent = async(newContent) => {
+        await this.refTable.current.setState({
+            content: [...this.refTable.current.state.content, newContent]
+        })
     }
 
     render() {
@@ -28,12 +35,12 @@ export default class ListTurn extends Component {
                 <Navbar />
                 <div className={style.container}>
                     <div className={style.title_subtitle}>
-                        <h1 className={style.title}>Your Turns</h1>
+                        <h1 className={style.title}>Turns</h1>
                     </div>
                     <section className={style.section}>
-                        <Calendar />
+                        <Calendar fun={this.changeContent.bind(this)} />
                         <div className={style.table_div}>
-                            <Table header={this.header} content={this.content} />
+                            <Table ref={this.refTable} header={this.header} content={this.content} />
                         </div>
                     </section>
                 </div>
