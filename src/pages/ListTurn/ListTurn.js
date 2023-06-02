@@ -36,6 +36,10 @@ export default class ListTurn extends Component {
         if (prevState.token !== this.state.token) {
             if (this.state.token !== ''){
                 this.loadTurns()
+            } else {
+                this.refTable.current.setState({
+                    content: []
+                })
             }
         }
     }

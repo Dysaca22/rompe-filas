@@ -16,10 +16,17 @@ export class NotificationBoard extends Component {
         super()
         this.state = {
             dates: [],
-            notifications: []
+            notifications: [],
+            token: JSON.parse(localStorage.getItem('tokenStorage')) || ''
         }
-        this.getNotifications()
         this.sw = true
+        this.interval = null
+    }
+
+    componentDidMount() {
+        if (this.state.token !== ''){
+            this.getNotifications()
+        }
     }
 
     dateString = (date) => {
@@ -32,7 +39,7 @@ export class NotificationBoard extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.dates !== this.state.dates) {
             if (this.sw) {
-                setInterval(this.searchNotification, 60000)
+                this.interval = setInterval(this.searchNotification, 60000)
                 this.searchNotification()
             }
         }
@@ -41,14 +48,26 @@ export class NotificationBoard extends Component {
             const bell = document.getElementById('bell')
             bell.classList.add('bell')
         }
+        
+        if (prevState.token !== this.state.token) {
+            if (this.state.token !== ''){
+                this.getNotifications()
+                this.sw = true
+            } else {
+                this.setState({
+                    dates: [],
+                    notifications: []
+                })
+                clearInterval(this.interval)
+                this.sw = true
+            }
+        }
     }
 
     getNotifications = async () => {
-        const tokenStorage = JSON.parse(localStorage.getItem('tokenStorage')) || ''
-
         await axios.get('http://localhost:8000/api/turn/', {
             headers: {
-                'Authorization': `Bearer ${tokenStorage}`
+                'Authorization': `Bearer ${this.state.token}`
             }
         })
             .then((response) => {

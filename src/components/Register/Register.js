@@ -11,7 +11,9 @@ export default class Register extends Component {
 
     constructor(props) {
         super()
-        this.changeTitle = props.changeTitle
+        this.refNavbar = props.refNavbar
+        this.refHome = props.refHome
+        this.refListTurn = props.refListTurn
     }
 
     signInRequest = (event) => {
@@ -36,8 +38,13 @@ export default class Register extends Component {
                     document.querySelectorAll('input').forEach(input => {
                         input.value = ''
                     })
-                    console.log(document.getElementById('listTurn'))
-                    this.changeTitle('Log Out')
+                    this.refNavbar.current.changeTitleLog('Log Out')
+                    this.refListTurn.current.setState({
+                        token: access
+                    })
+                    this.refNavbar.current.refNotiBoard.current.setState({
+                        token: access
+                    })
                 } else {
                     document.querySelector(`.${style.error}`).classList.remove('is-hidden')
                 }

@@ -6,7 +6,6 @@ import style from './Navbar.module.css'
 
 /* Components and Pages */
 import ButtonLine from '../ButtonLine'
-import Register from '../Register'
 import Bell from '../Bell'
 import NotificationBoard from '../NotificationBoard'
 
@@ -18,6 +17,9 @@ export default class Navbar extends Component {
         this.logRef = createRef();
         let tokenStorage = JSON.parse(localStorage.getItem('tokenStorage')) || ''
         this.initialNameLog = tokenStorage === '' ? 'Log In' : 'Log Out'
+        this.refNotiBoard = createRef()
+        this.refHome = props.refHome
+        this.refListTurn = props.refListTurn
     }
 
     registerOnClick = () => {
@@ -28,6 +30,12 @@ export default class Navbar extends Component {
         } else {
             window.localStorage.setItem("tokenStorage", JSON.stringify(''))
             this.logRef?.current.changeName(<span className={style.link}>Log In</span>)
+            this.refListTurn.current.setState({
+                token: ''
+            })
+            this.refNotiBoard.current.setState({
+                token: ''
+            })
         }
     }
 
@@ -60,8 +68,8 @@ export default class Navbar extends Component {
                         </div>
                     </div>
                 </header>
-                <NotificationBoard />
-                <Register changeTitle={this.changeTitleLog.bind(this)} />
+                <NotificationBoard ref={this.refNotiBoard} />
+                {this.props.children}
             </>
         )
     }
