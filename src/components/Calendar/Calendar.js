@@ -10,6 +10,9 @@ import './Calendar.css'
 /* Components and Pages */
 import Notification from '../../components/Notification'
 
+/* Icons */
+import { IconClipboard } from '@tabler/icons-react';
+
 
 const times = [
     "08:00 - 10:00",
@@ -103,14 +106,19 @@ const TheCalendar = props => {
 
         setBookingTimes([]);
 
+        const year = bookingDate.getFullYear();
+        const month = String(bookingDate.getMonth() + 1).padStart(2, '0');
+        const day = String(bookingDate.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
         const data = {
-            'date': bookingDate,
+            'date': formattedDate,
             'time': time
         }
 
         const tokenStorage = JSON.parse(localStorage.getItem('tokenStorage')) || ''
 
-        axios.post('http://localhost:8000/api/turns/', data, {
+        axios.post('http://localhost:8000/api/turn/', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${tokenStorage}`
@@ -119,7 +127,7 @@ const TheCalendar = props => {
             .then((response) => {
                 const { ok } = response.data
                 if (ok) {
-                    fun([dateString(bookingDate), `${time}`, 'c'])
+                    fun([formattedDate, `${time}`, (<IconClipboard size={30} />)])
                 } else {
                     console.log(response)
                 }

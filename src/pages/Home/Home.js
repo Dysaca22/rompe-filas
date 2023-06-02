@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import style from './Home.module.css'
 
 /* Components and Pages */
-import Navbar from '../../components/Navbar'
 import Cube from '../../components/Cube'
 
 
@@ -12,7 +11,6 @@ export default class Home extends Component {
     render() {
         return (
             <>
-                <Navbar />
                 <div className={style.container}>
                     <div className={style.title_subtitle}>
                         <h1 className={style.title}>Home</h1>

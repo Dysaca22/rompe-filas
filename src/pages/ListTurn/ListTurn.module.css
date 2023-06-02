@@ -1,5 +1,4 @@
 .container {
-    padding: 0 8%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -22,13 +21,20 @@
 
 .section {
     display: flex;
+    flex-flow: column nowrap;
+}
+
+.banner {
+    display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 
+.cube {
+    width: 300px;
+}
+
 .table_div {
-    max-width: 40%;
-    min-width: 350px;
     flex: 40%;
     display: flex;
     justify-content: flex-end;

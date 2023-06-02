@@ -7,6 +7,8 @@ import style from './Navbar.module.css'
 /* Components and Pages */
 import ButtonLine from '../ButtonLine'
 import Register from '../Register'
+import Bell from '../Bell'
+import NotificationBoard from '../NotificationBoard'
 
 
 export default class Navbar extends Component {
@@ -23,14 +25,21 @@ export default class Navbar extends Component {
         if (name === 'Log In') {
             const register = document.getElementById('register')
             register.classList.remove('is-hidden')
-        } else{
+        } else {
             window.localStorage.setItem("tokenStorage", JSON.stringify(''))
             this.logRef?.current.changeName(<span className={style.link}>Log In</span>)
         }
     }
 
+    bellOnClick = () => {
+        const notificationBoard = document.getElementById('notificationBoard')
+        notificationBoard.classList.remove('is-hidden')
+        const bell = document.getElementById('bell')
+        bell.classList.remove('bell')
+    }
+
     changeTitleLog = (newName) => {
-        this.logRef?.current.changeName(<span className={style.link}>{ newName }</span>)
+        this.logRef?.current.changeName(<span className={style.link}>{newName}</span>)
     }
 
     render() {
@@ -43,11 +52,15 @@ export default class Navbar extends Component {
                             <ButtonLine><Link className={style.link} to='/'>Home</Link></ButtonLine>
                             <ButtonLine><Link className={style.link} to='/turns'>Turns</Link></ButtonLine>
                         </nav>
-                        <ButtonLine ref={this.logRef} id='log' clickButton={this.registerOnClick} >
-                            <span className={style.link}>{this.initialNameLog}</span>
-                        </ButtonLine>
+                        <div className={style.right}>
+                            <Bell clickButton={this.bellOnClick} />
+                            <ButtonLine ref={this.logRef} id='log' clickButton={this.registerOnClick} >
+                                <span className={style.link}>{this.initialNameLog}</span>
+                            </ButtonLine>
+                        </div>
                     </div>
                 </header>
+                <NotificationBoard />
                 <Register changeTitle={this.changeTitleLog.bind(this)} />
             </>
         )

@@ -36,6 +36,7 @@ export default class Register extends Component {
                     document.querySelectorAll('input').forEach(input => {
                         input.value = ''
                     })
+                    console.log(document.getElementById('listTurn'))
                     this.changeTitle('Log Out')
                 } else {
                     document.querySelector(`.${style.error}`).classList.remove('is-hidden')
