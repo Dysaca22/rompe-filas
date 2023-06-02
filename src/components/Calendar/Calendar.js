@@ -10,9 +10,6 @@ import './Calendar.css'
 /* Components and Pages */
 import Notification from '../../components/Notification'
 
-/* Icons */
-import { IconClipboard } from '@tabler/icons-react';
-
 
 const times = [
     "08:00 - 10:00",
@@ -127,7 +124,7 @@ const TheCalendar = props => {
             .then((response) => {
                 const { ok } = response.data
                 if (ok) {
-                    fun([formattedDate, `${time}`, (<IconClipboard size={30} />)])
+                    fun([formattedDate, `${time}`, response.data.id])
                 } else {
                     console.log(response)
                 }

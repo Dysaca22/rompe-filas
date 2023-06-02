@@ -7,10 +7,7 @@ import style from './ListTurn.module.css'
 /* Components and Pages */
 import Calendar from '../../components/Calendar'
 import Cube from '../../components/Cube'
-import Table from '../../components/Table'
-
-/* Icons */
-import { IconClipboard } from '@tabler/icons-react';
+import Qualify from '../../components/Qualify'
 
 
 export default class ListTurn extends Component {
@@ -53,7 +50,7 @@ export default class ListTurn extends Component {
             }
         })
             .then(async (response) => {
-                this.content = response.data.map(obj => [obj['date'], obj['time'], (<IconClipboard size={30} />)])
+                this.content = response.data.map(obj => [obj['date'], obj['time'], obj['id']])
                 await this.refTable.current.setState({
                     content: this.content
                 })
@@ -85,7 +82,7 @@ export default class ListTurn extends Component {
                         </div>
                         <div className={style.banner}>
                             <div className={style.table_div}>
-                                <Table ref={this.refTable} header={this.header} content={this.content} />
+                                <Qualify ref={this.refTable} content={this.content} />
                             </div>
                         </div>
                     </section>
