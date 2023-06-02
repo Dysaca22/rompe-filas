@@ -17,6 +17,7 @@ export default class ListTurn extends Component {
         this.header = ['Date', 'Time', 'Action']
         this.content = []
         this.refTable = createRef()
+        this.refNavbar = props.refNavbar
     }
 
     state = {
@@ -24,14 +25,14 @@ export default class ListTurn extends Component {
     }
 
     componentDidMount() {
-        if (this.state.token !== ''){
+        if (this.state.token !== '') {
             this.loadTurns()
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.token !== this.state.token) {
-            if (this.state.token !== ''){
+            if (this.state.token !== '') {
                 this.loadTurns()
             } else {
                 this.refTable.current.setState({
@@ -63,6 +64,10 @@ export default class ListTurn extends Component {
     changeContent = async (newContent) => {
         await this.refTable.current.setState({
             content: [...this.refTable.current.state.content, newContent]
+        })
+
+        await this.refNavbar.current.refNotiBoard.current.setState({
+            dates: [...this.refNavbar.current.refNotiBoard.current.state.dates, [newContent[0], newContent[1]]]
         })
     }
 

@@ -28,7 +28,7 @@ export default class App extends Component {
             <Home ref={ref} />
         ))
         const ForwardListTurn = forwardRef((props, ref) => (
-            <ListTurn ref={ref} />
+            <ListTurn refNavbar={props.refNavbar} ref={ref} />
         ))
         return (
             <div className={style.app}>
@@ -38,7 +38,7 @@ export default class App extends Component {
                     </ForwardNavbar>
                     <Routes>
                         <Route path='/' element={<ForwardHome ref={refHome} />} />
-                        <Route path='/turns' element={<ForwardListTurn ref={refListTurn} />} />
+                        <Route path='/turns' element={<ForwardListTurn refNavbar={refNavbar} ref={refListTurn} />} />
                     </Routes>
                 </BrowserRouter>
             </div>
